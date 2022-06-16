@@ -1,0 +1,48 @@
+.search {
+    margin: 1rem .5rem 3rem .5rem;
+    
+    &__heading {
+        font-size: 2rem;
+    }
+
+    &__input-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: .5rem;
+        padding: 0 .5rem;
+
+        @media ( min-width: $breakpoint-desktop ) {
+            max-width: 970px;
+            margin: 4rem auto;
+        }
+    }
+
+    &__input {
+        width: 80%;
+        border-radius: 5px;
+        border: none;
+        background-color: #cfcfcf;
+        padding: .5rem;
+
+        @media ( min-width: $breakpoint-mobile ) {
+            height: 1.5rem;
+            width: 85%;
+        }
+
+        @media ( min-width: $breakpoint-tablet ) {
+            height: 2.5rem;
+            width: 90%;
+            font-size: 1.2rem;
+        }
+    }
+
+    &__icon {
+        cursor: pointer;
+        font-size: 1.5rem;
+
+        @media ( min-width: $breakpoint-tablet ) {
+            font-size: 2rem;
+        }
+    }
+}
