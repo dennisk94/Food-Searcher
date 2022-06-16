@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
-import HeaderSearch from "./HeaderSearch"
+import { FaLeaf } from "react-icons/fa";
 
 const Header = () => {
   return (
     <header className="header">
-        <Link to='/' className='header__logo'>Food Searcher</Link>
-        <div className="header__search">
-            <HeaderSearch />
+        <Link to='/' className='header__logo'><FaLeaf /></Link>
+        <div className="header__about">
+            <Link to='/'>About</Link>
         </div>
     </header>
   )

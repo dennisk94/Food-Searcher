@@ -1,6 +1,37 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 2rem;
-    background-color: $header-bgc;
+    background-color: $nav-bgc;
+
+    &__logo {
+        text-decoration: none;
+        color: $color-white;
+        font-weight: 500;
+        font-size: 1.5rem;
+        transition: .2s ease-in-out;
+
+        &:hover { 
+            color: $color-white-hover;
+        }
+    }
+
+    &__about {
+        font-size: 1.2rem;
+        font-weight: 500;
+        a {
+            text-decoration: none;
+            color: $color-white;
+            transition: .2s ease-in-out;
+
+            &:hover {
+                color: $color-white-hover;
+            }
+        }
+    }
+
+    @media ( min-width: $breakpoint-desktop ) {
+        padding: 2rem 5rem;
+    }
 }
