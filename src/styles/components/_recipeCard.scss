@@ -1,0 +1,23 @@
+.cards-wrapper {
+
+    @media ( min-width: $breakpoint-desktop ) {
+        display: flex;
+        column-gap: 1rem;
+    }
+}
+
+.card {
+        margin: 3rem 0rem;
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+    &__cta {
+        text-align: center;
+
+        .cta h2 {
+            color: $color-black;
+        }
+    }
+}
