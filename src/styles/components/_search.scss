@@ -23,7 +23,7 @@
         width: 80%;
         border-radius: 5px;
         border: none;
-        background-color: #cfcfcf;
+        background-color: $color-search-bgc;
         padding: .5rem;
 
         @media ( min-width: $breakpoint-mobile ) {

@@ -4,6 +4,7 @@ import Search from "../components/Search";
 import Cuisine from '../components/Cuisine';
 import Category from "../components/Category";
 import Nutrients from "../components/Nutrients";
+import SearchByIngredients from "../components/SearchByIngredients";
 
 const PageHome = () => {
   return (
@@ -14,6 +15,7 @@ const PageHome = () => {
       <Cuisine />
       <Category />
       <Nutrients />
+      <SearchByIngredients />
     </div>
   )
 }
