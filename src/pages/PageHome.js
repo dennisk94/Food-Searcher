@@ -2,6 +2,8 @@ import Banner from "../components/Banner";
 import Popular from "../components/Popular";
 import Search from "../components/Search";
 import Cuisine from '../components/Cuisine';
+import Category from "../components/Category";
+import Nutrients from "../components/Nutrients";
 
 const PageHome = () => {
   return (
@@ -10,6 +12,8 @@ const PageHome = () => {
       <Popular />
       <Search />
       <Cuisine />
+      <Category />
+      <Nutrients />
     </div>
   )
 }

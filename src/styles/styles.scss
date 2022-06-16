@@ -5,10 +5,13 @@
 // Components
 @import './components/banner';
 @import './components/cta';
+@import './components/viewMore';
 @import './components/recipeCard';
-@import './components/popularRecipes';
+@import './components/popular';
 @import './components/search';
 @import './components/cuisine';
+@import './components/category';
+@import './components/nutrients';
 
 // Layout
 @import './layout/header';

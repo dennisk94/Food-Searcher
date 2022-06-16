@@ -1,4 +1,5 @@
 import RecipeCard from "./RecipeCard";
+import ViewMore from "./ViewMore";
 
 const Cuisine = () => {
   return (
@@ -7,6 +8,7 @@ const Cuisine = () => {
         Italian
       </h2>
       <RecipeCard />
+      <ViewMore />
     </div>
   )
 }

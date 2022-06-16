@@ -3,6 +3,7 @@
     
     h2 {
         font-size: 2rem;
+        color: $color-section-heading;
 
         @media ( min-width: $breakpoint-mobile ) {
             font-size: 3rem;

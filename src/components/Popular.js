@@ -1,4 +1,5 @@
 import RecipeCard from "./RecipeCard";
+import ViewMore from "./ViewMore";
 
 const Popular = () => {
   return (
@@ -7,6 +8,7 @@ const Popular = () => {
         Popular
       </h2>
       <RecipeCard />
+      <ViewMore />
     </div>
   )
 }
