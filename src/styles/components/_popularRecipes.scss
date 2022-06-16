@@ -1,0 +1,22 @@
+.popular {
+    margin: 1rem .5rem;
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    &__card {
+        margin: 3rem 0rem;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    &__cta {
+        text-align: center;
+
+        .cta h2 {
+            color: $color-black;
+        }
+    }
+}
