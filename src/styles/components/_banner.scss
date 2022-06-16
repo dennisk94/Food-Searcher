@@ -25,27 +25,38 @@
         left: 2rem;
         z-index: 15;
         color: $color-white;
-
+        
         a {
-            font-weight: 500;
-            background-color: $banner-cta;
-            padding: .5rem 1rem;
-            border-radius: .5rem;
             color: $color-white;
-            text-decoration: none;
-            transition: .3s ease-in-out;
-
-            &:hover {
-                background-color: $banner-cta-hover;
-            }
         }
 
         @media ( min-width: $breakpoint-tablet ) {
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
 
         @media ( min-width: $breakpoint-desktop ) {
             left: 4rem;
+        }
+    }
+
+    &__heading {
+        font-size: 2rem;
+        a {
+            text-decoration: none;
+        }
+    }
+
+    &__link {
+        font-weight: 500;
+        background-color: $cta;
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        color: $color-white;
+        text-decoration: none;
+        transition: .3s ease-in-out;
+
+        &:hover {
+            background-color: $cta-hover;
         }
     }
 }

@@ -7,10 +7,13 @@ const Banner = () => {
         <img src={ placeHolder } alt="Banner" className='banner__img'/>
         <div className="banner__overlay"></div>
         <div className="banner__text">
-            <h1>
-                Featured Recipe Title
-            </h1>
-            <Link to='/'>View Recipe</Link>
+          <h2 className='banner__heading'>
+            <Link to='/' className='banner__title'>
+              Recipe Title
+            </Link>
+          </h2>
+        
+          <Link to='/' className='banner__link'>View Recipe</Link>
         </div>
     </div>
   )
