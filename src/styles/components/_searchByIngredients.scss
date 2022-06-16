@@ -1,0 +1,79 @@
+.search-ingredients {
+    margin: 1rem .5rem 3rem .5rem;
+
+    &__heading {
+        font-size: 2rem;
+        color: $color-section-heading;
+    }
+
+    &__filter {
+        display: flex;
+        align-items: center;
+        p {
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        button {
+            cursor: pointer;
+            margin-right: 1rem;
+            border: none;
+            border-radius: 5px;
+            color: $color-white;
+            background-color: $cta;
+            padding: .5rem 1rem;
+            transition: .3s ease-in-out;
+
+            &:hover {
+                background-color: $cta-hover;
+            }
+        }
+    }
+
+    &__input-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: .5rem;
+        padding: 0 .5rem;
+
+        p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+    }
+
+    &__input {
+        width: 80%;
+        border: none;
+        border-radius: 5px;
+        background-color: $color-search-bgc;
+        padding: .5rem;
+        
+        @media ( min-width: $breakpoint-mobile ) {
+            height: 1.5rem;
+            width: 85%;
+        }
+
+        @media ( min-width: $breakpoint-tablet ) {
+            height: 2.5rem;
+            width: 90%;
+            font-size: 1.2rem;
+        }
+    }
+
+    &__with {
+        p {
+            font-weight: 500;
+        }
+    }
+
+    &__icon {
+        cursor: pointer;
+        font-size: 1.5rem;
+
+        @media ( min-width: $breakpoint-tablet ) {
+            font-size: 2rem;
+        }
+    }
+}
