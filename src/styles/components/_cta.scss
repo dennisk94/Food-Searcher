@@ -1,0 +1,27 @@
+.cta {
+    margin: 1rem 0;
+
+    &__heading {
+        margin-bottom: 2rem;
+
+        a {
+            text-decoration: none;
+            color: $color-black;
+        }
+    }
+
+    &__link {
+        font-weight: 500;
+        background-color: $cta;
+        margin-top: 2rem;
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        color: $color-white;
+        text-decoration: none;
+        transition: .3s ease-in-out;
+
+        &:hover {
+            background-color: $cta-hover;
+        }
+    }
+}
