@@ -18,18 +18,22 @@ const PageHome = () => {
     const fetchPopularRecipes = async () => {
       const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&apiKey=${ API_KEY }`);
       let rawRecipeData = await res.json();
-      // rawRecipeData = rawRecipeData.results.splice(0, 1);
-      setRecipeData(rawRecipeData.results);
-      console.log(rawRecipeData.results);
+      rawRecipeData = rawRecipeData.results.splice(0, 3);
+      setRecipeData(rawRecipeData);
+      console.log(rawRecipeData);
     };
 
     fetchPopularRecipes();
   }, []);
 
+  if ( !recipeData ){
+    return;
+  }
+
   return (
     <div className="page-home">
       <Banner />
-      <Popular />
+      <Popular popularRecipes={ recipeData }/>
       <Search />
       <SearchResults />
       <Cuisine />
