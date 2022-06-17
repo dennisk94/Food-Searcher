@@ -2,6 +2,9 @@
 @import './base/base';
 @import './base/body';
 
+// Pages
+@import './pages/pageSingleRecipe';
+
 // Components
 @import './components/banner';
 @import './components/cta';
@@ -13,6 +16,7 @@
 @import './components/category';
 @import './components/nutrients';
 @import './components/searchByIngredients';
+@import './components/searchResults';
 
 // Layout
 @import './layout/header';

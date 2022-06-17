@@ -5,6 +5,7 @@ import Cuisine from '../components/Cuisine';
 import Category from "../components/Category";
 import Nutrients from "../components/Nutrients";
 import SearchByIngredients from "../components/SearchByIngredients";
+import SearchResults from "../components/SearchResults";
 
 const PageHome = () => {
   return (
@@ -12,10 +13,12 @@ const PageHome = () => {
       <Banner />
       <Popular />
       <Search />
+      <SearchResults />
       <Cuisine />
       <Category />
       <Nutrients />
       <SearchByIngredients />
+      <SearchResults />
     </div>
   )
 }
