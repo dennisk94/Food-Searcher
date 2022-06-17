@@ -24,4 +24,18 @@
             background-color: $cta-hover;
         }
     }
+
+    @media ( min-width: $breakpoint-desktop ) {
+        height: 100%;
+        position: relative;
+
+        &__link {
+            position: absolute;
+            width: 250px;
+            bottom: 0;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+        }
+    }
 }

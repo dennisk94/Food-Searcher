@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom';
 import imgPlaceholder from '../img/banner-placeholder.jpg';
 import RecipeCta from './RecipeCta';
 
-const RecipeCard = ( { title, img } ) => {
+const RecipeCard = ( { id, title, img, type } ) => {
     console.log(title);
 
   return (
     <>
         <div className="card">
-            <Link to={ `/recipe/${ title }` }>
-                <img src={ img } alt={ title } />
+            <Link to={ `/recipe/${ id }` }>
+                <img src={ `https://spoonacular.com/recipeImages/${ id }-636x393.${ type }` } alt={ title } />
             </Link>
             <div className="card__cta">
-                <RecipeCta title={title}/>
+                <RecipeCta id={ id } title={ title }/>
             </div>
         </div>
 

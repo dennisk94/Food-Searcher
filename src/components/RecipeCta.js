@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 
-const RecipeCta = ( { title } ) => {
+const RecipeCta = ( { id, title } ) => {
   return (
     <div className='cta'>
           <h2 className='cta__heading'>
-            <Link to={ `/recipe/${ title }` } >
+            <Link to={ `/recipe/${ id }` } >
               { title }
             </Link>
           </h2>
         
-        <Link to={ `/recipe/${ title }` } className='cta__link'>View Recipe</Link>
+        <Link to={ `/recipe/${ id }` } className='cta__link'>View Recipe</Link>
     </div>
   )
 }

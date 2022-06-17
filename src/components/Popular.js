@@ -11,7 +11,7 @@ const Popular = ( { popularRecipes } ) => {
       <div className="cards-wrapper">
       {
         popularRecipes.map( ( recipe ) => 
-          <RecipeCard key={ recipe.id } title={recipe.title} img={recipe.image}/>
+          <RecipeCard key={ recipe.id } id={ recipe.id } title={recipe.title} img={recipe.image} type={ recipe.imageType }/>
         )
       }
       </div>
