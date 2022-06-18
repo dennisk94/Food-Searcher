@@ -1,13 +1,19 @@
 import RecipeCard from "./RecipeCard";
 import ViewMore from "./ViewMore";
 
-const Cuisine = () => {
+const Cuisine = ( { cuisineRecipes } ) => {
   return (
     <div className="cuisine">
       <h2>
         Italian
       </h2>
-      <RecipeCard />
+      <div className="cards-wrapper">
+        {
+          cuisineRecipes.map( ( recipe ) => 
+          <RecipeCard key={ recipe.id } id={ recipe.id } title={recipe.title} img={recipe.image} type={ recipe.imageType }/>
+          )
+        }
+      </div>
       <ViewMore />
     </div>
   )
