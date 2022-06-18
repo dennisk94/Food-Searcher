@@ -2,7 +2,7 @@ import RecipeCard from "./RecipeCard";
 import ViewMore from "./ViewMore";
 
 const Popular = ( { popularRecipes } ) => {
-  console.log(popularRecipes);
+  // console.log(popularRecipes);
   return (
     <div className="popular">
       <h2>

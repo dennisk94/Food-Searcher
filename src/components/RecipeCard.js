@@ -3,7 +3,7 @@ import imgPlaceholder from '../img/banner-placeholder.jpg';
 import RecipeCta from './RecipeCta';
 
 const RecipeCard = ( { id, title, img, type } ) => {
-    console.log(title);
+    // console.log(title);
 
   return (
     <>
