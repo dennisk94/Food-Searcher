@@ -1,15 +1,19 @@
 import { useRef } from "react";
 import { GoSearch } from "react-icons/go";
 
-const Search = () => {
+const Search = ( { setSearchTerm } ) => {
 
   let searchRef = useRef();
   
   const searchInputHandler = (e) => {
     e.preventDefault();
     const inputValue = searchRef.current.value;
-    console.log(inputValue);
-    // searchRef = '';
+    inputValue.trim();
+    if ( inputValue !== '' ) {
+      console.log(inputValue);
+      setSearchTerm( inputValue );
+      searchRef.current.value = '';
+    }
   };
 
   return (

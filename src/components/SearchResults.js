@@ -1,12 +1,26 @@
 import RecipeCard from "./RecipeCard";
 
-const SearchResults = () => {
+const SearchResults = ( { searchRecipes } ) => {
   return (
     <div className="results">
-      <h2>
-        Results
-      </h2>
-      <RecipeCard />
+      {
+        searchRecipes ?  
+        <div className="cards-wrapper">
+          {
+            searchRecipes.map( ( recipe ) => 
+            <RecipeCard key={ recipe.id } id={ recipe.id } title={recipe.title} img={recipe.image} type={ recipe.imageType }/>
+            )
+          }
+        </div>
+        :
+        <></>
+      }
+  
+      {/* {
+        searchRecipes.map( ( recipe ) => 
+        <RecipeCard key={ recipe.id } id={ recipe.id } title={recipe.title} img={recipe.image} type={ recipe.imageType }/>
+        )
+      } */}
     </div>
   )
 }
