@@ -14,8 +14,8 @@
             font-weight: 500;
         }
 
-        button {
-            cursor: pointer;
+        h4 {
+            // cursor: pointer;
             margin-right: 1rem;
             border: none;
             border-radius: 5px;
@@ -24,9 +24,9 @@
             padding: .5rem 1rem;
             transition: .3s ease-in-out;
 
-            &:hover {
-                background-color: $cta-hover;
-            }
+            // &:hover {
+            //     background-color: $cta-hover;
+            // }
         }
     }
 
@@ -40,6 +40,11 @@
         p {
             font-size: 1.2rem;
             font-weight: 500;
+        }
+
+        @media ( min-width: $breakpoint-desktop ) {
+            max-width: 970px;
+            margin: 4rem auto;
         }
     }
 

@@ -1,6 +1,20 @@
+import { useRef } from "react";
 import { GoSearch } from "react-icons/go";
 
-const SearchByIngredients = () => {
+const SearchByIngredients = ( { setFilterTerm, filterTerms } ) => {
+
+    let filterRef = useRef();
+
+    const filterHandler = (e) => {
+        e.preventDefault();
+        const filterTerm = filterRef.current.value;
+        if ( filterTerm !== '' ) {
+            console.log(filterTerms);
+            setFilterTerm([...filterTerms, filterTerm]);
+            filterRef.current.value = '';
+        }
+    }
+
   return (
     <div className="search-ingredients">
         <h2 className="search-ingredients__heading">
@@ -10,24 +24,39 @@ const SearchByIngredients = () => {
             <p>
                 Recipes 
             </p>
-            <button>With</button>
-            <button>Without</button>
-        </div>
-        <div className="search-ingredients__input-wrapper">
-            
-            <input type="text" className="search-ingredients__input" placeholder="Search recipes by ingredients..."/>
-            <GoSearch className="search-ingredients__icon" />
-        </div>
-        <div className="search-ingredients__with">
-            <p>
+            <h4>
                 With
-            </p>
-            <ul className="search-ingredients__list">
-                <li>Pasta</li>
-                <li>Chicken</li>
-                <li>Onion</li>
-                <li>Garlic</li>
-            </ul>
+            </h4>
+        </div>
+        <form onSubmit={ filterHandler }>
+            <div className="search-ingredients__input-wrapper">
+                    <input 
+                        type="text" 
+                        className="search-ingredients__input" 
+                        placeholder="Search recipes by ingredients..."
+                        ref={ filterRef }    
+                    />
+                    <GoSearch 
+                        className="search-ingredients__icon" 
+                        onClick={ filterHandler }/>
+            </div>
+        </form>
+        <div className="search-ingredients__with">
+            {
+                filterTerms ? 
+                <>
+                    <p>
+                        With
+                    </p>
+                    <ul className="search-ingredients__list">
+                        {
+                            filterTerms.map( ( term ) => <li>{ term }</li>)
+                        }
+                    </ul>
+                </>
+                :
+                <></>
+            }
         </div>
     </div>
   )
