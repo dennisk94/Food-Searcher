@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-const ViewMore = () => {
+const ViewMore = ( { slug } ) => {
   return (
     <div className="view-more">
-        <Link to='/' className="view-more__link">View More<span className="view-more__arrow"><AiOutlineArrowRight /></span></Link>
+        <Link to={`/recipes/${ slug }`} className="view-more__link">View More<span className="view-more__arrow"><AiOutlineArrowRight /></span></Link>
     </div>
   )
 }

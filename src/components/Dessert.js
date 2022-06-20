@@ -8,13 +8,14 @@ const Dessert = ( { dessertRecipes } ) => {
         Dessert
       </h2>
       <div className="cards-wrapper">
-        {
+        {/* {
           dessertRecipes.map( ( recipe ) => 
             <RecipeCard key={ recipe.id } id={ recipe.id } title={recipe.title} img={recipe.image} type={ recipe.imageType }/>
           )
-        }
+        } */}
+        <RecipeCard />
       </div>
-      <ViewMore />
+      <ViewMore slug='dessert'/>
     </div>
   )
 }

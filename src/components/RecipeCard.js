@@ -32,6 +32,15 @@ const RecipeCard = ( { id, title, img, type } ) => {
             <div className="card__cta">
                 <RecipeCta />
             </div>
+        </div>
+
+        <div className="card">
+            <Link to='/'>
+                <img src={ imgPlaceholder } alt="placeholder" />
+            </Link>
+            <div className="card__cta">
+                <RecipeCta />
+            </div>
         </div> */}
     </>
   )
