@@ -12,7 +12,7 @@ function AppRouter() {
         <main className="main">
         <Routes>
           <Route index element={<PageHome/>}/>
-          <Route path='/recipe/:slug' element={<PageSingleRecipe />}/>
+          <Route path='/recipe/:id' element={<PageSingleRecipe />}/>
           <Route path='/recipes/:slug' element={<PageSingleCategory />}></Route>
         </Routes>
         </main>

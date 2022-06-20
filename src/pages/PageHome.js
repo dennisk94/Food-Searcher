@@ -57,7 +57,7 @@ const PageHome = () => {
 
   // // Get vegan recipes
   // const fetchVeganRecipes = async () => {
-  //   const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?diet=Vegan&sort=popularity&apiKey=${ API_KEY }`);
+  //   const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?diet=vegan&sort=popularity&apiKey=${ API_KEY }`);
   //   let rawRecipeData = await res.json();
   //   rawRecipeData = rawRecipeData.results.splice(0, 3);
   //   setVeganRecipeData(rawRecipeData);

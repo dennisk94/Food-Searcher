@@ -15,7 +15,7 @@ const Nutrients = ( { veganRecipes } ) => {
         } */}
         <RecipeCard />
       </div>
-      <ViewMore slug='Vegan'/>
+      <ViewMore slug='vegan'/>
     </div>
   )
 }
