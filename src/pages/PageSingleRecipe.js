@@ -1,38 +1,71 @@
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { API_KEY } from '../globals/apiKey';
 import RecipeCard from '../components/RecipeCard';
 import placeholder from '../img/banner-placeholder.jpg';
 
 const PageSingleRecipe = () => {
 
-    const { slug } = useParams();
-    console.log(slug);
+    const [ singleRecipe, setSingleRecipe ] = useState(null);
+
+    const { id } = useParams();
+    console.log(id);
+
+    useEffect( () => {
+        // https://api.spoonacular.com/recipes/716429/information?apiKey=347319ca970f403bbca7249f58f33b62&includeNutrition=true
+        // Get single recipe info
+        const fetchPopularRecipes = async () => {
+            const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/information?apiKey=${ API_KEY }&includeNutrition=true`);
+            let rawRecipeData = await res.json();
+            console.log(rawRecipeData);
+            // rawRecipeData = rawRecipeData.results.splice(0, 3);
+            setSingleRecipe(rawRecipeData);
+        };
+
+        fetchPopularRecipes();
+    }, [ id ]);
+
+    if ( !singleRecipe ) {
+        return;
+    }
+
+    const { title, 
+            imageType, 
+            // summary,
+            servings,
+            readyInMinutes,
+            sourceName,
+        } = singleRecipe;
+
   return (
     <div className='single-recipe'>
         <div className="single-recipe__banner">
             <div className="single-recipe__overview">
                 <h1>
-                    Title
+                    { title }
                 </h1>
-                <p className='single-recipe__text'>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quo fugiat itaque. Quas aperiam eum itaque modi optio, debitis sequi. Aspernatur ut maxime accusamus quia deserunt delectus mollitia nobis aliquid! Lorem ipsum dolor.
-                </p>
+                {/* <p className='single-recipe__text'>
+                    {
+                        summary
+                    }
+                </p> */}
 
                 <div className="single-recipe__info">
                     <h3>
-                        Serving Size: 2
+                        Servings: { servings }
                     </h3>
 
                     <h3>
-                        Prep Time: 20 min
+                        Ready In: { readyInMinutes } Min
                     </h3>
 
                     <h3>
-                        Cook Time: 20 min
+                        Recipe By: { sourceName }
                     </h3>
                 </div>
             </div>
 
-            <img src={ placeholder } alt="placeholder" className='single-recipe__img'/>
+            <img src={ `https://spoonacular.com/recipeImages/${ id }-636x393.${ imageType }` } alt={ title } className='single-recipe__img'/>
         </div>
 
         <div className="single-recipe__details">
