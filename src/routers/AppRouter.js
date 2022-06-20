@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from '../components/Footer';
 import PageHome from "../pages/PageHome";
 import PageSingleRecipe from "../pages/PageSingleRecipe";
+import PageSingleCategory from '../pages/PageSingleCategory';
 
 function AppRouter() {
   return (
@@ -12,6 +13,7 @@ function AppRouter() {
         <Routes>
           <Route index element={<PageHome/>}/>
           <Route path='/recipe/:slug' element={<PageSingleRecipe />}/>
+          <Route path='/recipes/:slug' element={<PageSingleCategory />}></Route>
         </Routes>
         </main>
       <Footer />
