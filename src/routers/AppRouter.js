@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import PageHome from "../pages/PageHome";
 import PageSingleRecipe from "../pages/PageSingleRecipe";
 import PageSingleCategory from '../pages/PageSingleCategory';
+import PageAbout from "../pages/PageAbout";
 
 function AppRouter() {
   return (
@@ -12,6 +13,7 @@ function AppRouter() {
         <main className="main">
         <Routes>
           <Route index element={<PageHome/>}/>
+          <Route path="/about" element={<PageAbout />}/>
           <Route path='/recipe/:id' element={<PageSingleRecipe />}/>
           <Route path='/recipes/:slug' element={<PageSingleCategory />}></Route>
         </Routes>
