@@ -6,11 +6,17 @@
     background-color: $nav-bgc;
 
     &__logo {
+        display: flex;
+        align-items: center;
         text-decoration: none;
         color: $color-white;
         font-weight: 500;
         font-size: 1.5rem;
         transition: .2s ease-in-out;
+
+        svg {
+            margin-right: .5rem;
+        }
 
         &:hover { 
             color: $color-white-hover;

@@ -4,7 +4,7 @@ import { FaLeaf } from "react-icons/fa";
 const Header = () => {
   return (
     <header className="header">
-        <Link to='/' className='header__logo'><FaLeaf /></Link>
+        <Link to='/' className='header__logo'><FaLeaf /> Food Searcher</Link>
         <div className="header__about">
             <Link to='/about'>About</Link>
         </div>
