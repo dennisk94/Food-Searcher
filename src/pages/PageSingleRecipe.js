@@ -25,12 +25,18 @@ const PageSingleRecipe = () => {
 
         fetchSingleRecipe();
         
+        // Get recipe instructions
         const fetchRecipeInstructions = async () => {
+            console.log(id);
             const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/analyzedInstructions?apiKey=${ API_KEY }`);
             let rawRecipeData = await res.json();
             console.log(rawRecipeData[0].steps);
             // rawRecipeData = rawRecipeData.results.splice(0, 3);
-            setRecipeInstructions(rawRecipeData[0].steps);
+            if ( rawRecipeData.length === 0 ) {
+                setRecipeInstructions(null);
+            } else {
+                setRecipeInstructions(rawRecipeData[0].steps);
+            }
         };
 
         fetchRecipeInstructions();
@@ -42,12 +48,12 @@ const PageSingleRecipe = () => {
 
     const { title, 
             imageType, 
-            // summary,
             servings,
             readyInMinutes,
             sourceName,
         } = singleRecipe;
 
+    // Code to display ingredients
     const displayIngredients = () => {
         return (
             singleRecipe.extendedIngredients.map( ( ingredient, i ) => {
@@ -61,12 +67,17 @@ const PageSingleRecipe = () => {
         )
     };
 
+    // // Code to display instructions
     const displayInstructions = () => {
+        // console.log(recipeInstructions.length);
         return (
-            recipeInstructions.map( ( instruction, i ) => <p key={i}>{ instruction.step }</p>)
+            recipeInstructions ? recipeInstructions.map( ( instruction, i ) => <li key={i}>{ instruction.step }</li>)
+            :
+            <></>
         )
     };
 
+    // // Code to display nutrition
     const displayNutrition = () => {
         return (
             singleRecipe.nutrition.nutrients.map( ( nutrient ) => {
@@ -162,17 +173,19 @@ const PageSingleRecipe = () => {
                 </ul>
             </div>
 
-            <div className="single-recipe__directions">
+            {
+                recipeInstructions ? 
+                <div className="single-recipe__directions">
                 <h3>
                     Directions
                 </h3>
                 <hr />
 
-                <p>
+                <ol>
                     {
                         displayInstructions()
                     }
-                </p>
+                </ol>
 
                 {/* <div className="single-recipe__step">
                     <h4>
@@ -228,6 +241,10 @@ const PageSingleRecipe = () => {
                     </p>
                 </div> */}
             </div>
+            :
+            <></>
+            }
+            
 
             <div className="single-recipe__nutrition">
                 <h3>
