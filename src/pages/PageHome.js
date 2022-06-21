@@ -12,6 +12,7 @@ import SearchResultsByIngredients from '../components/SearchResultsByIngredients
 
 const PageHome = () => {
 
+  const [ randomRecipes, setRandomRecipes ] = useState(null);
   const [ popularRecipeData, setPopularRecipeData ] = useState(null);
   const [ cuisineRecipeData, setCuisineRecipeData ] = useState(null);
   const [ dessertRecipeData, setDessertRecipeData ] = useState(null);
@@ -22,6 +23,18 @@ const PageHome = () => {
   const [ filterTerms, setFilterTerm ] = useState( [] );
 
   useEffect( () => {
+
+    // Get random recipes
+    const fetchRandomRecipes = async () => {
+      const res = await fetch(`https://api.spoonacular.com/recipes/random?number=3&apiKey=${ API_KEY }`);
+      let rawRecipeData = await res.json();
+      rawRecipeData = rawRecipeData.recipes;
+      console.log(rawRecipeData);
+      setRandomRecipes(rawRecipeData);
+    };
+
+    fetchRandomRecipes();
+
     // Get popular recipes
   //   const fetchPopularRecipes = async () => {
   //     const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&apiKey=${ API_KEY }`);
@@ -105,7 +118,7 @@ const PageHome = () => {
 
   return (
     <div className="page-home">
-      <Banner />
+      <Banner randomRecipes={ randomRecipes }/>
       <Popular popularRecipes={ popularRecipeData }/>
       <Search setSearchTerm={ setSearchTerm }/>
       <SearchResults searchRecipes={ searchRecipeData }/>
