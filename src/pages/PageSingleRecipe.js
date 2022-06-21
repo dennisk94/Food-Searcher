@@ -18,7 +18,7 @@ const PageSingleRecipe = () => {
         const fetchSingleRecipe = async () => {
             const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/information?apiKey=${ API_KEY }&includeNutrition=true`);
             let rawRecipeData = await res.json();
-            // console.log(rawRecipeData);
+            console.log(rawRecipeData);
             // rawRecipeData = rawRecipeData.results.splice(0, 3);
             setSingleRecipe(rawRecipeData);
         };
@@ -66,6 +66,56 @@ const PageSingleRecipe = () => {
             recipeInstructions.map( ( instruction, i ) => <p key={i}>{ instruction.step }</p>)
         )
     };
+
+    const displayNutrition = () => {
+        return (
+            singleRecipe.nutrition.nutrients.map( ( nutrient ) => {
+                switch ( nutrient.name ) {
+                    case 'Calories':
+                        return (
+                            <div className="single-recipe__nutrition-detail">
+                                <p>
+                                    Cal: { Math.floor(nutrient.amount) } { nutrient.unit }
+                                </p>
+                            </div>
+                        );
+                    case 'Protein':
+                        return (
+                            <div className="single-recipe__nutrition-detail">
+                                <p>
+                                Protein: { Math.floor(nutrient.amount) } { nutrient.unit }
+                                </p>
+                            </div>
+                        );
+                    case 'Fat':
+                        return (
+                            <div className="single-recipe__nutrition-detail">
+                                <p>
+                                Fat: { Math.floor(nutrient.amount) } { nutrient.unit }
+                                </p>
+                            </div>
+                        );
+                    case 'Carbohydrates':
+                        return (
+                            <div className="single-recipe__nutrition-detail">
+                                <p>
+                                    Carbs: { Math.floor(nutrient.amount) } { nutrient.unit }
+                                </p>
+                            </div>
+                        );
+                    case 'Fiber':
+                        return (
+                            <div className="single-recipe__nutrition-detail">
+                                <p>
+                                    Fiber: { Math.floor(nutrient.amount) } { nutrient.unit }
+                                </p>
+                            </div>
+                        );
+                    default:
+                }
+            } )
+        )
+    }
 
   return (
     <div className='single-recipe'>
@@ -186,7 +236,8 @@ const PageSingleRecipe = () => {
                 <hr />
 
                 <div className="single-recipe__nutrition-details">
-                    <div className="single-recipe__nutrition-detail">
+                    { displayNutrition() }
+                    {/* <div className="single-recipe__nutrition-detail">
                         <p>
                             540 Cal
                         </p>
@@ -210,7 +261,7 @@ const PageSingleRecipe = () => {
                         <p>
                             5g Fiber
                         </p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
