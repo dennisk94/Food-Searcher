@@ -1,5 +1,7 @@
 .banner {
     position: relative;
+    display: grid;
+    grid-template-columns: 600px 1fr;
 
     &__img {
         width: 100%;
