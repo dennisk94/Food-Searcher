@@ -7,6 +7,7 @@ import placeholder from '../img/banner-placeholder.jpg';
 const PageSingleRecipe = () => {
 
     const [ singleRecipe, setSingleRecipe ] = useState(null);
+    const [ recipeInstructions, setRecipeInstructions ] = useState( null );
 
     const { id } = useParams();
     console.log(id);
@@ -14,15 +15,25 @@ const PageSingleRecipe = () => {
     useEffect( () => {
         // https://api.spoonacular.com/recipes/716429/information?apiKey=347319ca970f403bbca7249f58f33b62&includeNutrition=true
         // Get single recipe info
-        const fetchPopularRecipes = async () => {
+        const fetchSingleRecipe = async () => {
             const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/information?apiKey=${ API_KEY }&includeNutrition=true`);
             let rawRecipeData = await res.json();
-            console.log(rawRecipeData);
+            // console.log(rawRecipeData);
             // rawRecipeData = rawRecipeData.results.splice(0, 3);
             setSingleRecipe(rawRecipeData);
         };
 
-        fetchPopularRecipes();
+        fetchSingleRecipe();
+        
+        const fetchRecipeInstructions = async () => {
+            const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/analyzedInstructions?apiKey=${ API_KEY }`);
+            let rawRecipeData = await res.json();
+            console.log(rawRecipeData[0].steps);
+            // rawRecipeData = rawRecipeData.results.splice(0, 3);
+            setRecipeInstructions(rawRecipeData[0].steps);
+        };
+
+        fetchRecipeInstructions();
     }, [ id ]);
 
     if ( !singleRecipe ) {
@@ -36,6 +47,25 @@ const PageSingleRecipe = () => {
             readyInMinutes,
             sourceName,
         } = singleRecipe;
+
+    const displayIngredients = () => {
+        return (
+            singleRecipe.extendedIngredients.map( ( ingredient, i ) => {
+                return (
+                    <div className='single-recipe__ingredient'>
+                        <li key={i}>{ ingredient.original }</li>
+                        <img src={ `https://spoonacular.com/cdn/ingredients_100x100/${ ingredient.image }` } alt={ ingredient.name } />
+                    </div>
+                )
+            })
+        )
+    };
+
+    const displayInstructions = () => {
+        return (
+            recipeInstructions.map( ( instruction, i ) => <p key={i}>{ instruction.step }</p>)
+        )
+    };
 
   return (
     <div className='single-recipe'>
@@ -60,7 +90,7 @@ const PageSingleRecipe = () => {
                     </h3>
 
                     <h3>
-                        Recipe By: { sourceName }
+                        Recipe By: { sourceName ? sourceName : 'N/A' }
                     </h3>
                 </div>
             </div>
@@ -76,14 +106,9 @@ const PageSingleRecipe = () => {
                 <hr />
 
                 <ul className='single-recipe__list'>
-                    <li>Garlic</li>
-                    <li>Onion</li>
-                    <li>Chicken</li>
-                    <li>Pasta</li>
-                    <li>Canned Tomato</li>
-                    <li>Butter</li>
-                    <li>Bell Pepper</li>
-                    <li>Sugar</li>
+                    {
+                        displayIngredients()
+                    }
                 </ul>
             </div>
 
@@ -93,7 +118,13 @@ const PageSingleRecipe = () => {
                 </h3>
                 <hr />
 
-                <div className="single-recipe__step">
+                <p>
+                    {
+                        displayInstructions()
+                    }
+                </p>
+
+                {/* <div className="single-recipe__step">
                     <h4>
                         Step 1
                     </h4>
@@ -145,7 +176,7 @@ const PageSingleRecipe = () => {
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis id debitis temporibus illum? Quas nobis cumque officia incidunt beatae delectus repudiandae reprehenderit quos, laboriosam dolore a adipisci, vero voluptas asperiores.
                     </p>
-                </div>
+                </div> */}
             </div>
 
             <div className="single-recipe__nutrition">
