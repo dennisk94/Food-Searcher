@@ -8,6 +8,7 @@ const PageSingleRecipe = () => {
 
     const [ singleRecipe, setSingleRecipe ] = useState(null);
     const [ recipeInstructions, setRecipeInstructions ] = useState( null );
+    const [ similarRecipes, setSimilarRecipes ] = useState(null);
 
     const { id } = useParams();
     console.log(id);
@@ -18,7 +19,7 @@ const PageSingleRecipe = () => {
         const fetchSingleRecipe = async () => {
             const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/information?apiKey=${ API_KEY }&includeNutrition=true`);
             let rawRecipeData = await res.json();
-            console.log(rawRecipeData);
+            // console.log(rawRecipeData);
             // rawRecipeData = rawRecipeData.results.splice(0, 3);
             setSingleRecipe(rawRecipeData);
         };
@@ -30,7 +31,7 @@ const PageSingleRecipe = () => {
             console.log(id);
             const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/analyzedInstructions?apiKey=${ API_KEY }`);
             let rawRecipeData = await res.json();
-            console.log(rawRecipeData[0].steps);
+            // console.log(rawRecipeData[0].steps);
             // rawRecipeData = rawRecipeData.results.splice(0, 3);
             if ( rawRecipeData.length === 0 ) {
                 setRecipeInstructions(null);
@@ -40,6 +41,18 @@ const PageSingleRecipe = () => {
         };
 
         fetchRecipeInstructions();
+
+        // Get similar recipes
+        const fetchSimilarRecipes = async () => {
+            // console.log(id);
+            const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/similar?apiKey=${ API_KEY }`);
+            let rawRecipeData = await res.json();
+            console.log(rawRecipeData);
+            rawRecipeData = rawRecipeData.splice(0, 3);
+            setSimilarRecipes(rawRecipeData);
+        };
+
+        fetchSimilarRecipes();
     }, [ id ]);
 
     if ( !singleRecipe ) {
@@ -127,6 +140,18 @@ const PageSingleRecipe = () => {
             } )
         )
     }
+
+    const displaySimilarRecipes = () => {
+        if ( similarRecipes ) {
+            return(
+                similarRecipes.map( ( recipe ) => <RecipeCard   key={ recipe.id }
+                                                                id={ recipe.id } 
+                                                                title={recipe.title} 
+                                                                type={ recipe.imageType }
+                />)
+            )
+        }
+    };
 
   return (
     <div className='single-recipe'>
@@ -286,8 +311,12 @@ const PageSingleRecipe = () => {
                 <h3>
                     Similar Recipes
                 </h3>
-
-                <RecipeCard />
+                <hr />
+                <div className="single-recipe__cards-wrapper">
+                    {
+                        displaySimilarRecipes()
+                    }
+                </div>
             </div>
         </div>
     </div>
