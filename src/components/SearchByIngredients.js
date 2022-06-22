@@ -20,14 +20,14 @@ const SearchByIngredients = ( { setFilterTerm, filterTerms } ) => {
         <h2 className="search-ingredients__heading">
             Search Recipe by Ingredients
         </h2>
-        <div className="search-ingredients__filter">
+        {/* <div className="search-ingredients__filter">
             <p>
                 Recipes 
             </p>
             <h4>
                 With
             </h4>
-        </div>
+        </div> */}
         <form onSubmit={ filterHandler }>
             <div className="search-ingredients__input-wrapper">
                     <input 
@@ -45,9 +45,9 @@ const SearchByIngredients = ( { setFilterTerm, filterTerms } ) => {
             {
                 filterTerms ? 
                 <>
-                    <p>
+                    <h3>
                         With
-                    </p>
+                    </h3>
                     <ul className="search-ingredients__list">
                         {
                             filterTerms.map( ( term ) => <li>{ term }</li>)

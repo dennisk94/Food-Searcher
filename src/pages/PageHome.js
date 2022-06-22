@@ -36,48 +36,48 @@ const PageHome = () => {
     fetchRandomRecipes();
 
     // Get popular recipes
-  //   const fetchPopularRecipes = async () => {
-  //     const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&apiKey=${ API_KEY }`);
-  //     let rawRecipeData = await res.json();
-  //     rawRecipeData = rawRecipeData.results.splice(0, 3);
-  //     setPopularRecipeData(rawRecipeData);
-  //     // console.log(rawRecipeData);
-  //   };
+    const fetchPopularRecipes = async () => {
+      const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&apiKey=${ API_KEY }`);
+      let rawRecipeData = await res.json();
+      rawRecipeData = rawRecipeData.results.splice(0, 3);
+      setPopularRecipeData(rawRecipeData);
+      // console.log(rawRecipeData);
+    };
 
-  //   fetchPopularRecipes();
+    fetchPopularRecipes();
 
   //  // Get cuisine recipes
-  //   const fetchCuisineRecipes = async () => {
-  //   const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&cuisine=Italian&apiKey=${ API_KEY }`);
-  //   let rawRecipeData = await res.json();
-  //   rawRecipeData = rawRecipeData.results.splice(0, 3);
-  //   setCuisineRecipeData(rawRecipeData);
-  //   // console.log(rawRecipeData);
-  // };
+    const fetchCuisineRecipes = async () => {
+    const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&cuisine=Italian&apiKey=${ API_KEY }`);
+    let rawRecipeData = await res.json();
+    rawRecipeData = rawRecipeData.results.splice(0, 3);
+    setCuisineRecipeData(rawRecipeData);
+    // console.log(rawRecipeData);
+  };
 
-  // fetchCuisineRecipes();
+  fetchCuisineRecipes();
 
   // // Get dessert recipes
-  // const fetchBeverageRecipes = async () => {
-  //   const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?type=dessert&sort=popularity&apiKey=${ API_KEY }`);
-  //   let rawRecipeData = await res.json();
-  //   rawRecipeData = rawRecipeData.results.splice(0, 3);
-  //   setDessertRecipeData(rawRecipeData);
-  //   // console.log(rawRecipeData);
-  // };
+  const fetchBeverageRecipes = async () => {
+    const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?type=dessert&sort=popularity&apiKey=${ API_KEY }`);
+    let rawRecipeData = await res.json();
+    rawRecipeData = rawRecipeData.results.splice(0, 3);
+    setDessertRecipeData(rawRecipeData);
+    // console.log(rawRecipeData);
+  };
 
-  // fetchBeverageRecipes();
+  fetchBeverageRecipes();
 
   // // Get vegan recipes
-  // const fetchVeganRecipes = async () => {
-  //   const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?diet=vegan&sort=popularity&apiKey=${ API_KEY }`);
-  //   let rawRecipeData = await res.json();
-  //   rawRecipeData = rawRecipeData.results.splice(0, 3);
-  //   setVeganRecipeData(rawRecipeData);
-  //   // console.log(rawRecipeData);
-  // };
+  const fetchVeganRecipes = async () => {
+    const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?diet=vegan&sort=popularity&apiKey=${ API_KEY }`);
+    let rawRecipeData = await res.json();
+    rawRecipeData = rawRecipeData.results.splice(0, 3);
+    setVeganRecipeData(rawRecipeData);
+    // console.log(rawRecipeData);
+  };
 
-  // fetchVeganRecipes();
+  fetchVeganRecipes();
 
    // Get searched recipes
     if ( searchTerm ) {
@@ -93,28 +93,28 @@ const PageHome = () => {
     }
 
     // Get searched recipes based on ingredients
-    // if ( filterTerms ) {
-    //   console.log(filterTerms);
-    //   const fetchRecipesByIngredients = async () => {
-    //     const res = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ filterTerms[0] },${ filterTerms.slice(1).map( ( term ) => `+${term},`) }&apiKey=${ API_KEY }`);
-    //     let rawRecipeData = await res.json();
-    //     rawRecipeData = rawRecipeData.splice(0, 3);
-    //     console.log(rawRecipeData);
-    //     setRecipeByIngredientsData(rawRecipeData);
-    //   };
+    if ( filterTerms ) {
+      console.log(filterTerms);
+      const fetchRecipesByIngredients = async () => {
+        const res = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ filterTerms[0] },${ filterTerms.slice(1).map( ( term ) => `+${term},`) }&apiKey=${ API_KEY }`);
+        let rawRecipeData = await res.json();
+        rawRecipeData = rawRecipeData.splice(0, 3);
+        console.log(rawRecipeData);
+        setRecipeByIngredientsData(rawRecipeData);
+      };
     
-    //   fetchRecipesByIngredients();
-    // }
+      fetchRecipesByIngredients();
+    }
 
   }, [searchTerm, filterTerms]);
 
-  // if ( !popularRecipeData   ||
-  //      !cuisineRecipeData   ||
-  //      !dessertRecipeData   ||
-  //      !veganRecipeData     
-  //   ){
-  //   return;
-  // }
+  if ( !popularRecipeData   ||
+       !cuisineRecipeData   ||
+       !dessertRecipeData   ||
+       !veganRecipeData     
+    ){
+    return;
+  }
 
   return (
     <div className="page-home">
