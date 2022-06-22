@@ -1,16 +1,24 @@
 import placeHolder from '../img/banner-placeholder.jpg';
-import { Link } from 'react-router-dom';
+import BannerCards from './BannerCards';
 import RecipeCard from './RecipeCard';
 
 const Banner = ( { randomRecipes } ) => {
   return (
     <div className="banner">
         {
+          randomRecipes && randomRecipes.map( ( recipe, i ) => <BannerCards key={ recipe.id } 
+                                                                            i={ i }
+                                                                            id={ recipe.id } 
+                                                                            title={recipe.title} 
+                                                                            type={ recipe.imageType }
+          />)
+        }
+        {/* {
           randomRecipes && randomRecipes.map( ( recipe, i ) => <RecipeCard key={ recipe.id } 
                                                                           id={ recipe.id } 
                                                                           title={recipe.title} 
                                                                           type={ recipe.imageType }/>)
-        }
+        } */}
         {/* <img src={ placeHolder } alt="Banner" className='banner__img'/>
         <div className="banner__overlay"></div>
         <div className="banner__text">
