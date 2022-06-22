@@ -10,7 +10,6 @@ const Search = ( { setSearchTerm } ) => {
     const inputValue = searchRef.current.value;
     inputValue.trim();
     if ( inputValue !== '' ) {
-      console.log(inputValue);
       setSearchTerm( inputValue );
       searchRef.current.value = '';
     }

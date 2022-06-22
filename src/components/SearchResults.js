@@ -15,12 +15,6 @@ const SearchResults = ( { searchRecipes } ) => {
         :
         <></>
       }
-  
-      {/* {
-        searchRecipes.map( ( recipe ) => 
-        <RecipeCard key={ recipe.id } id={ recipe.id } title={recipe.title} img={recipe.image} type={ recipe.imageType }/>
-        )
-      } */}
     </div>
   )
 }

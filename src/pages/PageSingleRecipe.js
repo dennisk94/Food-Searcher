@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_KEY } from '../globals/apiKey';
 import RecipeCard from '../components/RecipeCard';
-import placeholder from '../img/banner-placeholder.jpg';
 
 const PageSingleRecipe = () => {
 
@@ -11,16 +10,12 @@ const PageSingleRecipe = () => {
     const [ similarRecipes, setSimilarRecipes ] = useState(null);
 
     const { id } = useParams();
-    console.log(id);
 
     useEffect( () => {
-        // https://api.spoonacular.com/recipes/716429/information?apiKey=347319ca970f403bbca7249f58f33b62&includeNutrition=true
         // Get single recipe info
         const fetchSingleRecipe = async () => {
             const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/information?apiKey=${ API_KEY }&includeNutrition=true`);
             let rawRecipeData = await res.json();
-            // console.log(rawRecipeData);
-            // rawRecipeData = rawRecipeData.results.splice(0, 3);
             setSingleRecipe(rawRecipeData);
         };
 
@@ -28,11 +23,8 @@ const PageSingleRecipe = () => {
         
         // Get recipe instructions
         const fetchRecipeInstructions = async () => {
-            console.log(id);
             const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/analyzedInstructions?apiKey=${ API_KEY }`);
             let rawRecipeData = await res.json();
-            // console.log(rawRecipeData[0].steps);
-            // rawRecipeData = rawRecipeData.results.splice(0, 3);
             if ( rawRecipeData.length === 0 ) {
                 setRecipeInstructions(null);
             } else {
@@ -44,10 +36,8 @@ const PageSingleRecipe = () => {
 
         // Get similar recipes
         const fetchSimilarRecipes = async () => {
-            // console.log(id);
             const res = await fetch(`https://api.spoonacular.com/recipes/${ id }/similar?apiKey=${ API_KEY }`);
             let rawRecipeData = await res.json();
-            console.log(rawRecipeData);
             rawRecipeData = rawRecipeData.splice(0, 3);
             setSimilarRecipes(rawRecipeData);
         };
@@ -82,7 +72,6 @@ const PageSingleRecipe = () => {
 
     // // Code to display instructions
     const displayInstructions = () => {
-        // console.log(recipeInstructions.length);
         return (
             recipeInstructions ? recipeInstructions.map( ( instruction, i ) => <li key={i}>{ instruction.step }</li>)
             :
@@ -160,12 +149,6 @@ const PageSingleRecipe = () => {
                 <h1>
                     { title }
                 </h1>
-                {/* <p className='single-recipe__text'>
-                    {
-                        summary
-                    }
-                </p> */}
-
                 <div className="single-recipe__info">
                     <h3>
                         Servings: { servings }
@@ -211,60 +194,6 @@ const PageSingleRecipe = () => {
                         displayInstructions()
                     }
                 </ol>
-
-                {/* <div className="single-recipe__step">
-                    <h4>
-                        Step 1
-                    </h4>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis id debitis temporibus illum? Quas nobis cumque officia incidunt beatae delectus repudiandae reprehenderit quos, laboriosam dolore a adipisci, vero voluptas asperiores.
-                    </p>
-                </div>
-               
-                
-                <div className="single-recipe__step">
-                    <h4>
-                        Step 2
-                    </h4>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis id debitis temporibus illum? Quas nobis cumque officia incidunt beatae delectus repudiandae reprehenderit quos, laboriosam dolore a adipisci, vero voluptas asperiores.
-                    </p>
-                </div>
-
-                
-                <div className="single-recipe__step">
-                    <h4>
-                        Step 3
-                    </h4>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis id debitis temporibus illum? Quas nobis cumque officia incidunt beatae delectus repudiandae reprehenderit quos, laboriosam dolore a adipisci, vero voluptas asperiores.
-                    </p>
-                </div>
-
-                
-                <div className="single-recipe__step">
-                    <h4>
-                        Step 4
-                    </h4>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis id debitis temporibus illum? Quas nobis cumque officia incidunt beatae delectus repudiandae reprehenderit quos, laboriosam dolore a adipisci, vero voluptas asperiores.
-                    </p>
-                </div>
-
-                
-                <div className="single-recipe__step">
-                    <h4>
-                        Step 5
-                    </h4>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis id debitis temporibus illum? Quas nobis cumque officia incidunt beatae delectus repudiandae reprehenderit quos, laboriosam dolore a adipisci, vero voluptas asperiores.
-                    </p>
-                </div> */}
             </div>
             :
             <></>
@@ -279,31 +208,6 @@ const PageSingleRecipe = () => {
 
                 <div className="single-recipe__nutrition-details">
                     { displayNutrition() }
-                    {/* <div className="single-recipe__nutrition-detail">
-                        <p>
-                            540 Cal
-                        </p>
-                    </div>
-                    <div className="single-recipe__nutrition-detail">
-                        <p>
-                            20g Protein
-                        </p>
-                    </div>
-                    <div className="single-recipe__nutrition-detail">
-                        <p>
-                            15g Fat
-                        </p>
-                    </div>
-                    <div className="single-recipe__nutrition-detail">
-                        <p>
-                            40g Carbs
-                        </p>
-                    </div>
-                    <div className="single-recipe__nutrition-detail">
-                        <p>
-                            5g Fiber
-                        </p>
-                    </div> */}
                 </div>
             </div>
 

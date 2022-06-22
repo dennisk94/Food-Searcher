@@ -8,7 +8,6 @@ const PageSingleCategory = () => {
   const [ categoryRecipesData, setCategoryRecipesData ] = useState(null);
 
   const { slug } = useParams();
-  console.log(slug);
 
   useEffect( () => {
 
@@ -19,7 +18,6 @@ const PageSingleCategory = () => {
         let rawRecipeData = await res.json();
         rawRecipeData = rawRecipeData.results;
         setCategoryRecipesData(rawRecipeData);
-        // console.log(rawRecipeData);
       };
 
     fetchPopularRecipes();
@@ -30,7 +28,6 @@ const PageSingleCategory = () => {
       let rawRecipeData = await res.json();
       rawRecipeData = rawRecipeData.results;
       setCategoryRecipesData(rawRecipeData);
-      // console.log(rawRecipeData);
       };
 
       fetchCuisineRecipes();
@@ -41,7 +38,6 @@ const PageSingleCategory = () => {
         let rawRecipeData = await res.json();
         rawRecipeData = rawRecipeData.results;
         setCategoryRecipesData(rawRecipeData);
-        console.log(rawRecipeData);
       };
 
       fetchDessertRecipes();
@@ -52,7 +48,6 @@ const PageSingleCategory = () => {
           let rawRecipeData = await res.json();
           rawRecipeData = rawRecipeData.results;
           setCategoryRecipesData(rawRecipeData);
-          console.log(rawRecipeData);
         };
 
         fetchVeganRecipes();
@@ -79,9 +74,6 @@ const PageSingleCategory = () => {
         {
           categoryHeadingGenerator()
         }
-          {/* <h1>
-              Single Category
-          </h1> */}
           <div className="single-category__cards-grid">
             {
               categoryRecipesData && categoryRecipesData.map( ( recipe ) => 

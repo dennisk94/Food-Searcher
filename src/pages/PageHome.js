@@ -29,7 +29,6 @@ const PageHome = () => {
       const res = await fetch(`https://api.spoonacular.com/recipes/random?number=3&apiKey=${ API_KEY }`);
       let rawRecipeData = await res.json();
       rawRecipeData = rawRecipeData.recipes;
-      console.log(rawRecipeData);
       setRandomRecipes(rawRecipeData);
     };
 
@@ -41,7 +40,6 @@ const PageHome = () => {
       let rawRecipeData = await res.json();
       rawRecipeData = rawRecipeData.results.splice(0, 3);
       setPopularRecipeData(rawRecipeData);
-      // console.log(rawRecipeData);
     };
 
     fetchPopularRecipes();
@@ -52,7 +50,6 @@ const PageHome = () => {
     let rawRecipeData = await res.json();
     rawRecipeData = rawRecipeData.results.splice(0, 3);
     setCuisineRecipeData(rawRecipeData);
-    // console.log(rawRecipeData);
   };
 
   fetchCuisineRecipes();
@@ -63,7 +60,6 @@ const PageHome = () => {
     let rawRecipeData = await res.json();
     rawRecipeData = rawRecipeData.results.splice(0, 3);
     setDessertRecipeData(rawRecipeData);
-    // console.log(rawRecipeData);
   };
 
   fetchBeverageRecipes();
@@ -74,7 +70,6 @@ const PageHome = () => {
     let rawRecipeData = await res.json();
     rawRecipeData = rawRecipeData.results.splice(0, 3);
     setVeganRecipeData(rawRecipeData);
-    // console.log(rawRecipeData);
   };
 
   fetchVeganRecipes();
@@ -86,7 +81,6 @@ const PageHome = () => {
         let rawRecipeData = await res.json();
         rawRecipeData = rawRecipeData.results.splice(0, 3);
         setSearchRecipeData(rawRecipeData);
-        // console.log(rawRecipeData);
       };
     
       fetchSearchedRecipes();
@@ -99,7 +93,6 @@ const PageHome = () => {
         const res = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ filterTerms[0] },${ filterTerms.slice(1).map( ( term ) => `+${term},`) }&apiKey=${ API_KEY }`);
         let rawRecipeData = await res.json();
         rawRecipeData = rawRecipeData.splice(0, 3);
-        console.log(rawRecipeData);
         setRecipeByIngredientsData(rawRecipeData);
       };
     

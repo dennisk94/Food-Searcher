@@ -2,7 +2,6 @@ import RecipeCard from "./RecipeCard";
 import ViewMore from "./ViewMore";
 
 const Popular = ( { popularRecipes } ) => {
-  // console.log(popularRecipes);
   return (
     <div className="popular">
       <h2>
@@ -14,7 +13,6 @@ const Popular = ( { popularRecipes } ) => {
           <RecipeCard key={ recipe.id } id={ recipe.id } title={recipe.title} img={recipe.image} type={ recipe.imageType }/>
         )
       }
-      {/* <RecipeCard /> */}
       </div>
       <ViewMore slug='popular'/>
     </div>

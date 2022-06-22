@@ -13,7 +13,6 @@ const Dessert = ( { dessertRecipes } ) => {
             <RecipeCard key={ recipe.id } id={ recipe.id } title={recipe.title} img={recipe.image} type={ recipe.imageType }/>
           )
         }
-        {/* <RecipeCard /> */}
       </div>
       <ViewMore slug='dessert'/>
     </div>

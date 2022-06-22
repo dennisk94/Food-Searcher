@@ -20,14 +20,6 @@ const SearchByIngredients = ( { setFilterTerm, filterTerms } ) => {
         <h2 className="search-ingredients__heading">
             Search Recipe by Ingredients
         </h2>
-        {/* <div className="search-ingredients__filter">
-            <p>
-                Recipes 
-            </p>
-            <h4>
-                With
-            </h4>
-        </div> */}
         <form onSubmit={ filterHandler }>
             <div className="search-ingredients__input-wrapper">
                     <input 
