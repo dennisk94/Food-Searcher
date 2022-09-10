@@ -6,7 +6,7 @@ Food Searcher is a React web app that pulls recipe information from the [Spoonac
 
 ### Demo
 
-Check out teh live demo here:
+Check out the live demo here:
 
 [![Link to the live site](https://img.shields.io/static/v1?label=View%20Live%20Site&message=%40%20Dennis.kim%2Ecodes&color=c13535&style=for-the-badge&logoWidth=20&logo=react&logoColor=blue&labelColor=c2c2c2)](https://denniskim.codes/)
 
